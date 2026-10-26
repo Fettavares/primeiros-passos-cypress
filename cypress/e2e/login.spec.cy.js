@@ -1,3 +1,5 @@
+import userData from '../fixtures/user-data.json'
+
 describe('Orange HRM Tests', () => {
 
   const selectorsList = {
@@ -6,17 +8,6 @@ describe('Orange HRM Tests', () => {
     loginButton: '.oxd-button',
     sectionTitleTopBar: '.oxd-topbar-header-breadcrumb > .oxd-text',
     wrongCredentialAlert: '.oxd-alert'
-  }
-
-  const userData = {
-    userSuccess:{
-      username:'Admin',
-      password:'admin123'
-    },
-    userFail:{
-    username:'teste',
-    password:'teste'
-    }
   }
 
   it('Login - Success', () => {
