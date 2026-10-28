@@ -12,8 +12,12 @@ describe('Orange HRM Tests', () => {
     lastNameField: "[name='lastName']",
     middleNameField: '[name="middleName"]',
     genericField: ".oxd-input--active",
-    submitButton: "[type='submit']"
+    submitButton: "[type='submit']",
+    nationalityButton: ":nth-child(5) > :nth-child(1) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon",
+    marrialButton: ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon",
+    closeCalendarButton: ".--close"
   }
+
 
   it.only('User Info Update - Success', () => {
     cy.visit('/auth/login')
@@ -31,8 +35,14 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorsList.genericField).eq(4).type('ID')
     cy.get(selectorsList.genericField).eq(5).type('1234')
     cy.get(selectorsList.genericField).eq(6).clear().type('2027-06-11')
+      cy.get(selectorsList.closeCalendarButton).click()
+
+    cy.get(selectorsList.nationalityButton).click()
+      cy.contains("Brazilian").click()
+    cy.get(selectorsList.marrialButton).click()
+      cy.contains("Single").click()
     cy.get(selectorsList.submitButton).eq(1).click()
-    
+
   })
   it('Login - Fail', () => {
     cy.visit('/auth/login')
